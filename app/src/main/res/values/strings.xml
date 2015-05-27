@@ -7,4 +7,16 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="rendimento">Rendimento</string>
+    <string name="descricao_rendimento">Descrição</string>
+    <string name="calc_rendimento">Cálculo de Rendimento</string>
+    <string name="reagente">Reagente</string>
+    <string name="produto">Produto</string>
+    <string name="massa">Massa</string>
+    <string name="massa_molar">Massa Molar</string>
+    <string name="pesofrasco">Peso do frasco</string>
+    <string name="pestototal">Peso total</string>
+    <string name="peso_liquido">Peso Liquido</string>
+    <string name="Rendimento">Rendimento</string>
+    <string name="calcular">Calcular</string>
+
 </resources>
