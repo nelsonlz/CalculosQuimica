@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CalculosDeQuimica</string>
+    <string name="app_name">Cálculos de Quimica</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -18,5 +18,6 @@
     <string name="peso_liquido">Peso Liquido</string>
     <string name="Rendimento">Rendimento</string>
     <string name="calcular">Calcular</string>
+    <string name="title_activity_calculo_rendimento">CalculoRendimentoActivity</string>
 
 </resources>

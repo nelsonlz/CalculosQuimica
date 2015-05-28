@@ -91,6 +91,12 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
                 values.put("massa_produto", mp);
                 values.put("massa_molar_produto", mmp);
                 values.put("resultado", result);
+                long resultado = db.insert("rendimento",null, values);
+                if(resultado != -1){
+                    Toast.makeText(v.getContext(),"Registro armazenado",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(v.getContext(),"Falha ao salvar",Toast.LENGTH_SHORT).show();
+                }
         }
     }
 }
