@@ -2,6 +2,7 @@ package quimica.nldev.com.calculosdequimica;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -97,6 +98,16 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
                 }else{
                     Toast.makeText(v.getContext(),"Falha ao salvar",Toast.LENGTH_SHORT).show();
                 }
+                Cursor cursor = db.rawQuery("select * from rendimento",null);
+                cursor.moveToFirst();
+
+                String teste = "";
+                double t = 0;
+                for(int i = 0; i < cursor.getCount(); i++){
+                        t += cursor.getDouble(7);
+                    teste += String.valueOf(t)+"\n";
+                }
+                Toast.makeText(v.getContext(),teste,Toast.LENGTH_LONG).show();
         }
     }
 }
