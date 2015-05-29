@@ -19,6 +19,8 @@ import org.w3c.dom.Text;
 
 import java.util.Date;
 
+import quimica.nldev.com.calculosdequimica.quimica.nldev.com.calculosdequimica.domain.Rendimento;
+
 
 /**
  * A placeholder fragment containing a simple view.
@@ -32,6 +34,7 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
     private EditText edtMassaProduto;
     private TextView tvResultado;
     private DatabaseHelper helper;
+
 
     public CalculoRendimentoActivityFragment() {
     }
@@ -48,7 +51,7 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
         edtMassaReagente = (EditText) v.findViewById(R.id.edt_massa_reagente);
         tvResultado = (TextView) v.findViewById(R.id.tv_resultado);
         btnCalcular.setOnClickListener(this);
-        helper = new DatabaseHelper(v.getContext());
+
 
         return v;
     }
@@ -75,6 +78,7 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
                 if(!validaCampos(v.getContext()))
                     break;
                 //(E4/E5)*100/(B4/B5)
+
                 double mp = Double.valueOf(edtMassaProduto.getText().toString());
                 double mmp = Double.valueOf(edtMassaMolarProduto.getText().toString());
                 double mr = Double.valueOf(edtMassaReagente.getText().toString());
@@ -82,32 +86,7 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
                 double result = (mp/mmp)*100/(mr/mmr);
                 tvResultado.setText(String.valueOf(result)) ;
 
-                SQLiteDatabase db = helper.getWritableDatabase();
-                ContentValues values = new ContentValues();
-                values.put("descricao",edtDescricao.getText().toString());
-                Date data = new Date();
-                values.put("data", data.getDate());
-                values.put("massa_reagente", mr);
-                values.put("massa_molar_reagente", mmr);
-                values.put("massa_produto", mp);
-                values.put("massa_molar_produto", mmp);
-                values.put("resultado", result);
-                long resultado = db.insert("rendimento",null, values);
-                if(resultado != -1){
-                    Toast.makeText(v.getContext(),"Registro armazenado",Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(v.getContext(),"Falha ao salvar",Toast.LENGTH_SHORT).show();
-                }
-                Cursor cursor = db.rawQuery("select * from rendimento",null);
-                cursor.moveToFirst();
 
-                String teste = "";
-                double t = 0;
-                for(int i = 0; i < cursor.getCount(); i++){
-                        t += cursor.getDouble(7);
-                    teste += String.valueOf(t)+"\n";
-                }
-                Toast.makeText(v.getContext(),teste,Toast.LENGTH_LONG).show();
         }
     }
 }
