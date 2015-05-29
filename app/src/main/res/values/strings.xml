@@ -19,5 +19,6 @@
     <string name="Rendimento">Rendimento</string>
     <string name="calcular">Calcular</string>
     <string name="title_activity_calculo_rendimento">CalculoRendimentoActivity</string>
+    <string name="title_activity_reacoes">ReacoesActivity</string>
 
 </resources>

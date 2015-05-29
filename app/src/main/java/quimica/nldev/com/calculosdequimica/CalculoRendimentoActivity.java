@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class CalculoRendimentoActivity extends ActionBarActivity {
@@ -11,7 +14,7 @@ public class CalculoRendimentoActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculo_rendimento);
+        setContentView(R.layout.activity_reacoes);
     }
 
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <fragment
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:name="quimica.nldev.com.calculosdequimica.ListaRendimentosFragment"
+        android:id="@+id/fragment"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_lista_rendimentos" />
+
+    <fragment
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:name="quimica.nldev.com.calculosdequimica.CalculoRendimentoFragment"
+        android:id="@+id/fragment2"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_calculo_rendimento" />
+</LinearLayout>

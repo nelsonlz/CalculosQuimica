@@ -1,12 +1,9 @@
 package quimica.nldev.com.calculosdequimica;
 
-import android.content.ContentValues;
+
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.text.style.ClickableSpan;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,17 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.util.Date;
-
+import quimica.nldev.com.calculosdequimica.R;
 import quimica.nldev.com.calculosdequimica.quimica.nldev.com.calculosdequimica.domain.Rendimento;
 
-
 /**
- * A placeholder fragment containing a simple view.
+ * A simple {@link Fragment} subclass.
  */
-public class CalculoRendimentoActivityFragment extends Fragment implements View.OnClickListener {
+public class CalculoRendimentoFragment extends Fragment implements View.OnClickListener{
     private Button btnCalcular;
     private EditText edtDescricao;
     private EditText edtMassaMolarReagente;
@@ -34,8 +27,10 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
     private EditText edtMassaProduto;
     private TextView tvResultado;
 
-    public CalculoRendimentoActivityFragment() {
+    public CalculoRendimentoFragment() {
+        // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,8 +44,6 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
         edtMassaReagente = (EditText) v.findViewById(R.id.edt_massa_reagente);
         tvResultado = (TextView) v.findViewById(R.id.tv_resultado);
         btnCalcular.setOnClickListener(this);
-
-
         return v;
     }
 
@@ -65,7 +58,7 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
         if(edtMassaMolarProduto.getText().toString().isEmpty())
             res = "Informe a massa molar do produto!\n";
         if(!res.isEmpty())
-            Toast.makeText(ctx, res,Toast.LENGTH_LONG).show();
+            Toast.makeText(ctx, res, Toast.LENGTH_LONG).show();
         return res.isEmpty();
     }
 
@@ -85,9 +78,7 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
                 if(r.salvar(edtDescricao.getText().toString())){
                     Toast.makeText(v.getContext(),"Registro armazenado",Toast.LENGTH_SHORT).show();
                 }else
-                    Toast.makeText(v.getContext(),"Não foi possivel armazenar o registro!",Toast.LENGTH_SHORT).show();
-
-
+                    Toast.makeText(v.getContext(),"No foi possivel armazenar o registro!",Toast.LENGTH_SHORT).show();
         }
     }
 }
