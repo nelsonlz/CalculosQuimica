@@ -33,8 +33,6 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
     private EditText edtMassaReagente;
     private EditText edtMassaProduto;
     private TextView tvResultado;
-    private DatabaseHelper helper;
-
 
     public CalculoRendimentoActivityFragment() {
     }
@@ -77,14 +75,17 @@ public class CalculoRendimentoActivityFragment extends Fragment implements View.
             case R.id.btn_calcular:
                 if(!validaCampos(v.getContext()))
                     break;
-                //(E4/E5)*100/(B4/B5)
-
-                double mp = Double.valueOf(edtMassaProduto.getText().toString());
-                double mmp = Double.valueOf(edtMassaMolarProduto.getText().toString());
-                double mr = Double.valueOf(edtMassaReagente.getText().toString());
-                double mmr = Double.valueOf(edtMassaMolarReagente.getText().toString());
-                double result = (mp/mmp)*100/(mr/mmr);
-                tvResultado.setText(String.valueOf(result)) ;
+                Rendimento r = new Rendimento(v);
+                r.setMp(Double.valueOf(edtMassaProduto.getText().toString()));
+                r.setMmp(Double.valueOf(edtMassaMolarProduto.getText().toString()));
+                r.setMr(Double.valueOf(edtMassaReagente.getText().toString()));
+                r.setMmr(Double.valueOf(edtMassaMolarReagente.getText().toString()));
+                r.calcular();
+                tvResultado.setText(String.valueOf(r.getResult()));
+                if(r.salvar(edtDescricao.getText().toString())){
+                    Toast.makeText(v.getContext(),"Registro armazenado",Toast.LENGTH_SHORT).show();
+                }else
+                    Toast.makeText(v.getContext(),"Não foi possivel armazenar o registro!",Toast.LENGTH_SHORT).show();
 
 
         }
